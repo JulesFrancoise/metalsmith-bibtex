@@ -93,6 +93,10 @@ bibtex.other}}Markowitz1996{{/bibcite}}.
 
 See 'example' folder for use within a metalsmith project.
 
+## Credits
+
+This plugin relies on [bib2json](https://github.com/mayanklahiri/bib2json) (all the hard work is there!).
+
 ## License
 
 MIT
