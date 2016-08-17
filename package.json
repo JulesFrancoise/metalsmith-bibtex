@@ -1,0 +1,27 @@
+{
+  "name": "metalsmith-bibtex",
+  "version": "1.0.0",
+  "description": "A metalsmith plugin to load and render bibtex bibliographies.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "metalsmith",
+    "bibtex"
+  ],
+  "author": "Jules Françoise",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JulesFrancoise/metalsmith-bibtex.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bib2json": "0.0.1",
+    "handlebars": "^4.0.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "metalsmith": "^1.7.0"
+  }
+}

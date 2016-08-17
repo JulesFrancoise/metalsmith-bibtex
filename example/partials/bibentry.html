@@ -1,0 +1,20 @@
+{{#if_eq type 'article'}}
+{{author}} ({{year}}).
+<b>{{title}}</b>.
+<i>{{journal}}</i>
+{{#if volume}}, {{volume}}  {{#if number}} ({{number}}) {{/if}} {{/if}}
+{{#if pages}}, pp. {{pages}} {{/if}}
+{{#if address}}, {{address}} {{/if}}.
+{{#if url}}<a href="{{url}}">{{url}}</a>{{else}}{{#if doi}}<a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a>{{/if}}{{/if}}
+{{else}}
+{{#if_eq type 'inproceedings'}}
+{{author}} ({{year}}).
+<b>{{title}}</b>.
+<i>{{booktitle}}{{#if series}} ({{series}}) {{/if}}</i>
+{{#if pages}}, pp. {{pages}} {{/if}}
+{{#if address}}, {{address}} {{/if}}.
+{{#if url}}<a href="{{url}}">{{url}}</a>{{else}}{{#if doi}}<a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a>{{/if}}{{/if}}
+{{else}}
+Reference Type not implemented!
+{{/if_eq}}
+{{/if_eq}}
