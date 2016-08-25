@@ -25,8 +25,8 @@ metalsmith(__dirname)
     .metadata({
         title: 'metalsmith-bibtex example',
         description: 'Example use of the metalsmith-bibtex plugin',
-        generator: "Metalsmith",
-        url: "http://www.metalsmith.io/"
+        generator: 'Metalsmith',
+        url: 'http://www.metalsmith.io/'
     })
     .source('./src')
     .destination('./build')
@@ -39,12 +39,14 @@ metalsmith(__dirname)
         },
         default: 'publications',
         style: 'default', // available styles: ['default', 'ieeetr']
-        numbered: false
+        keystyle: 'numbered',
+        sortBy: 'year',
+        reverseOrder: true
     }))
     .use(markdown())
     .use(layouts(templateConfig))
     .use(inplace(templateConfig))
-    .build(function(err, files) {
+    .build(function(err) {
         if (err) {
             throw err;
         }

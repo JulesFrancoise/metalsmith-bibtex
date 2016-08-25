@@ -33,28 +33,65 @@ metalsmith.use(bibtex({
 * `style`: Style for rendering bibliographic entries using handlebars helper. Current styles include:
     * `default`
     * `ieeetr`
-* `numbered`: specifies if the citation in the text and bibliography should be numbered or use cite-keys.
+* `keystyle`: specifies if the style of citation in the text and bibliography keys (nothing if undefined). Possible options are `numbered` and `citekey`.
+* `sortBy`: specifies the default field for sorting bibliographies.
+* `reverseOrder`: specifies if entries should be sorted in reverse order.
 
-## handlebars Helpers
+## Handlebars Helpers
 
 ### Displaying a bibliography
 
-The plugin defines a handlebars helper for rendering bibtex entries as formatted HTML. It takes an entry as argument, and optionally a style:
+__Displaying an entire collection__
 
-Usage:
+The plugin defines a handlebars helper for rendering an entire bibtex collection as formatted HTML. It takes a collection as argument, and optionally a style, and key style:
+
+```
+{{bibliography <collection> [style=bibtex.style.<styleName>] [keystyle='numbered'|'citekey']}}
+```
+
+__Displaying a single entry__
+
+Similarly, the `bibformat` helper renders a single bibtex entry:
+
 ```
 {{bibformat <entry> [style=bibtex.style.<styleName>]}}
 ```
 
-For example, to render the full bibliography for collection `publications`:
+__Manipulating CSS__
 
-```html
-<ul>
-{{#each bibtex.publications}}
-    <li id="bibentry_{{@key}}">[{{@key}}] {{bibformat this}}
-    </li>
+The rendering helpers wrap all the fields of a bibtex entry in html tags with classes such as `class="bibtex title"`, which allows for further styling.
+
+### Sorting and Grouping
+
+__Sorting__
+
+Collections can be sorted according to any field using the `bibsort` helper:
+
+```
+{{bibsort <collection> <field> [bool:reverseOrder]}}
+```
+
+Example: rendering a collection sorted by year in descending order:
+
+```
+{{bibliography (bibsort bibtex.other _year true)}}
+```
+
+__Grouping__
+
+Collections can be grouped by unique values of a given field:
+
+```
+{{bibgroup <collection> <field>}}
+```
+
+Example of bibliography grouped by entry type:
+
+```
+{{#each (bibgroup bibtex.other _entrytype)}}
+    <h4>{{group}}</h4>
+    {{bibliography entries}}
 {{/each}}
-</ul>
 ```
 
 ### Citations inside a page
@@ -81,12 +118,7 @@ bibtex.other}}Markowitz1996{{/bibcite}}.
 [...]
 
 <h1>References</h1>
-<ul>
-{{#each citations}}
-    <li id="bibentry_{{@key}}">[{{#if @root.bibtex.numbered}}{{@index}}{{else}}{{@key}}{{/if}}] {{bibformat this}}
-    </li>
-{{/each}}
-</ul>
+{{bibliography citations keystyle=bibtex.keystyle}}
 ```
 
 ### Example

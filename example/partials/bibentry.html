@@ -1,4 +1,4 @@
-{{#if_eq type 'article'}}
+{{#if_eq entrytype 'article'}}
 {{author}} ({{year}}).
 <b>{{title}}</b>.
 <i>{{journal}}</i>
@@ -7,7 +7,7 @@
 {{#if address}}, {{address}} {{/if}}.
 {{#if url}}<a href="{{url}}">{{url}}</a>{{else}}{{#if doi}}<a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a>{{/if}}{{/if}}
 {{else}}
-{{#if_eq type 'inproceedings'}}
+{{#if_eq entrytype 'inproceedings'}}
 {{author}} ({{year}}).
 <b>{{title}}</b>.
 <i>{{booktitle}}{{#if series}} ({{series}}) {{/if}}</i>
