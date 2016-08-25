@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-bibtex",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A metalsmith plugin to load and render bibtex bibliographies.",
   "main": "lib/index.js",
   "scripts": {
