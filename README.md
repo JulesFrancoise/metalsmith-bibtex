@@ -22,7 +22,9 @@ metalsmith.use(bibtex({
     },
     default: 'publications',
     style: 'default', // available styles: ['default', 'ieeetr']
-    numbered: false
+    keystyle: 'numbered',
+    sortBy: 'year',
+    reverseOrder: true
 }));
 ```
 
