@@ -18,6 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "bib2json": "0.0.1",
+    "fs": "0.0.1-security",
     "handlebars": "^4.0.5",
     "path": "^0.12.7"
   },
